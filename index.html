@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-5 backgrond-color:primary" id="app">
+        <div class="text-center">
+            <h1>{{titulo}}</h1>
+        </div>
+        
+        <hr>
+
+        <div class="d-flex-row  align-items-center">
+            <div class="text-center">
+                <h4>Añadir un producto</h4>
+            </div>
+
+            <div class="input-group p-2">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Nombre</span>
+                </div>
+                <input type="text" class="form-control" v-model="nuevoProducto" v-on:keyup.enter="agregarProducto">
+
+                
+            </div>
+            <div class="input-group p-2">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Descripción:</span>
+                </div>
+                <input type="text" class="form-control" v-model="nuevaDescripcion" v-on:keyup.enter="agregarProducto">
+
+            </div>
+            <div class="input-group p-2">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Precio:</span>
+                </div>
+                <input type="number" class="form-control" v-model="nuevoPrecio" v-on:keyup.enter="agregarProducto">
+
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-primary text-center" @click="agregarProducto">Añadir Producto</button>
+            </div>
+
+
+
+        </div>
+    
+
+
+        <hr>
+        <div class="container ">
+            <h2>Lista de Productos</h2>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>n°</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Precio</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item,index) of Productos">
+                        <td>{{index+1}}</td>
+                        <td>{{item.nombre}}</td>
+                        <td>{{item.descripcion}}</td>
+                        <td>{{item.precio}}</td>
+                        <td><button class="btn btn-success btn-sm" @click="editarProducto(index)">Editar</button></td>
+                        <td><button class="btn btn-danger btn-sm" @click="eliminarProducto(index)">Eliminar</button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
