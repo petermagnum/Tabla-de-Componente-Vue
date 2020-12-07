@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="container mt-5 backgrond-color:primary" id="app">
+    <div class="container mt-5 " id="app">
         <div class="text-center">
             <h1>{{titulo}}</h1>
         </div>
@@ -29,7 +29,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Nombre</span>
                 </div>
-                <input type="text" class="form-control" v-model="nuevoProducto" v-on:keyup.enter="agregarProducto">
+                <input type="text" class="form-control" v-model="nuevoProducto"  v-model.text="editProducto" v-on:keyup.enter="agregarProducto">
 
                 
             </div>
@@ -37,14 +37,14 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Descripción:</span>
                 </div>
-                <input type="text" class="form-control" v-model="nuevaDescripcion" v-on:keyup.enter="agregarProducto">
+                <input type="text" class="form-control" v-model="nuevaDescripcion"  v-model.text="editDescripcion"  v-on:keyup.enter="agregarProducto">
 
             </div>
             <div class="input-group p-2">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Precio:</span>
                 </div>
-                <input type="number" class="form-control" v-model="nuevoPrecio" v-on:keyup.enter="agregarProducto">
+                <input type="number" class="form-control" v-model="nuevoPrecio"  v-model.number="editPrecio"v-on:keyup.enter="agregarProducto">
 
             </div>
 
@@ -79,7 +79,8 @@
                         <td>{{item.nombre}}</td>
                         <td>{{item.descripcion}}</td>
                         <td>{{item.precio}}</td>
-                        <td><button class="btn btn-success btn-sm" @click="editarProducto(index)">Editar</button></td>
+                        <td><button class="btn btn-success btn-sm" @click="setearProducto(index)">Editar</button>
+                            <button class="btn btn-info btn-sm" @click="editarProducto(index)">Guardar</button></td>
                         <td><button class="btn btn-danger btn-sm" @click="eliminarProducto(index)">Eliminar</button>
                         </td>
                     </tr>
